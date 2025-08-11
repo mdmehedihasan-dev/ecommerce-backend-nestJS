@@ -23,7 +23,7 @@ import { CouponModule } from './coupon/coupon.module';
       port: 5432,
       username: "postgres",
       password: "1943",
-      database: "ecommerce",
+      database: "postgres",
       entities: [User,Product,Store,Review,Category],
       synchronize: true,
     }), 

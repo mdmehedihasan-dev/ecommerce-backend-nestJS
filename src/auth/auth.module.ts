@@ -12,7 +12,7 @@ imports: [
   TypeOrmModule.forFeature([User]), 
   JwtModule.register({
     secret: 'your_jwt_secret', 
-    signOptions: { expiresIn: '15h' }, 
+    signOptions: { expiresIn: '24h' }, 
   })
 ],
   providers: [AuthService,JwtStrategy],
