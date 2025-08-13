@@ -18,7 +18,6 @@ export class ProductController {
 
   constructor(private  readonly productService: ProductService) {}
 
-  /*🏳️<===============(Create Product Start)===============>🏳️*/
   @Post('create')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(

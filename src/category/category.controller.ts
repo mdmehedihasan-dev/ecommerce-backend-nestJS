@@ -11,7 +11,6 @@ export class CategoryController {
     
     constructor(private readonly categoryService:CategoryService){}
 
-    /*🏳️<===============(Create Category Start)===============>🏳️ */
     @Post('createcategory')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth() 
@@ -23,9 +22,7 @@ export class CategoryController {
       const ownerId = req.user.id;
       return this.categoryService.createCategory(createCategoryDto, ownerId);
     }
-    /*🚩<===============(Create Category End)===============>🚩 */
 
-    /*🏳️<===============(Update Category Start)===============>🏳️ */
 
     @Put('updateCategory/:id')
     @UseGuards(JwtAuthGuard)   
@@ -39,9 +36,7 @@ export class CategoryController {
         console.log(ownerId)
         return this.categoryService.updateCategory(+id, updateCategoryDto, ownerId);
     }
-    /*🚩<===============(Update Category End)===============>🚩 */
 
-    /*🏳️<===============(Delete Category Start)===============>🏳️ */
 
     @Delete('deleteCategory/:id')
     @UseGuards(JwtAuthGuard)
@@ -55,8 +50,6 @@ export class CategoryController {
         return this.categoryService.deleteCategory(+id, ownerId);
     }
 
-    /*🚩<===============(Delete Category End)===============>🚩 */
-    /*🏳️<===============(Get All Categories Start)===============>🏳️ */
 
     @Get('getAllCategory')
     @UseGuards(JwtAuthGuard)
@@ -69,9 +62,7 @@ export class CategoryController {
         return this.categoryService.getAllCategory(ownerId);
     }
 
-    /*🚩<===============(Get All Categories End)===============>🚩 */
 
-    /*🏳️<===============(Get Category By ID Start)===============>🏳️ */
     @Get('getCategoryById/:id')
     @UseGuards(JwtAuthGuard)  
     @ApiBearerAuth()
@@ -83,16 +74,5 @@ export class CategoryController {
         const ownerId = req.user.id;
         return this.categoryService.getCategoryById(+id, ownerId);
     }
-    /*🚩<===============(Get Category By ID End)===============>🚩 */
-
-    
-
-
-
-
-
-
-
-
 
 }

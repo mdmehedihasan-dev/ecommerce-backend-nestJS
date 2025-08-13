@@ -6,12 +6,11 @@ import { RefreshTokenDto } from './dto/refreshToken.dto';
 import { JwtAuthGuard } from '../jwt-auth.guard';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('authentication')
+@ApiTags('ecommerce')
 @Controller('auth')
 export class AuthController { 
   constructor(private authService: AuthService) {}
  
-  // ============ Registration Controller ============
   @Post('register')
   @ApiOperation({ summary: 'Register a new user' })
   @ApiResponse({ status: 201, description: 'User registered successfully.' })
@@ -23,7 +22,6 @@ export class AuthController {
         return this.authService.register(registerDto);
   }
   
-  // =============== Login Controller ==================
   @Post('login')
   @ApiOperation({ summary: 'Login a user' })
   @ApiResponse({ status: 200, description: 'User logged in successfully.' })
@@ -36,7 +34,6 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  // ================ Refresh token controller ================
    @Post('refresh')
     @ApiOperation({ summary: 'Refresh access token' })
     @ApiResponse({ status: 200, description: 'Access token refreshed successfully.' })
@@ -47,7 +44,6 @@ export class AuthController {
     return this.authService.refresh(refreshTokenDto.refreshToken)
    }
 
-    // =============== Personal Information Controller ===============
    @UseGuards(JwtAuthGuard)
    @Get('profile')
    @ApiOperation({ summary: 'Get user profile' })
@@ -56,8 +52,5 @@ export class AuthController {
    async getProfile(){
     console.log('abc')
    } 
-
-
-
 
 }

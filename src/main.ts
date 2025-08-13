@@ -21,16 +21,15 @@ async function bootstrap() {
     }),
   );
 
-  // Serve images from /uploads
   app.useStaticAssets(join(__dirname, '..', 'uploads'), {
     prefix: '/uploads/',
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Product API')
-    .setDescription('Product management with image upload')
+    .setTitle('ecommerce API')
+    .setDescription('API documentation for the Ecommerce application')
     .setVersion('1.0')
-    .addTag('product')
+    .addTag('ecommerce')
     .addBearerAuth()
     .build();
 
