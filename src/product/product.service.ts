@@ -27,9 +27,7 @@ export class ProductService {
 
   ) {}
 
-    /*<========================================>
-         🏳️   Create Product  Start    🏳️
-    ===========================================>*/
+    /*=================== Create Product  Start =====================>*/
 
     async createProduct(
         userId: number ,
@@ -86,14 +84,9 @@ export class ProductService {
      throw new InternalServerErrorException('Failed to create product.');
      }
     }
+   
+  /*===================  get A Single Product  Start  =====================*/
 
-    /*<========================================>
-       🚩       Create Product End        🚩
-    ===========================================>*/
-
-    /*<========================================>
-          🏳️   get A Single Product  Start    🏳️
-    ===========================================>*/
    async getProductById(id: number, userId: number): Promise<Product> {
         const product = await this.productRepository.findOne({
             where: {id},
@@ -112,14 +105,9 @@ export class ProductService {
     }
 
     
-    /*<========================================>
-       🚩      get A Single Product End     🚩
-    ===========================================>*/
 
+ /*===================  get All Product  Start   =====================*/
 
-    /*<========================================>
-         🏳️   get All Product  Start    🏳️
-    ===========================================>*/
    async getAllProduct(userId: number): Promise<{ message: string; products?: Product[] }> {
         const products = await this.productRepository.find({
             where: {
@@ -142,14 +130,8 @@ export class ProductService {
         };
     }
 
-    /*<========================================>
-       🚩      get All Product End        🚩
-    ===========================================>*/
+   /*===================  Update A Single Product  Start   =====================*/
 
-
-    /*<========================================>
-       🏳️  Update A Single Product  Start  🏳️
-    ===========================================>*/
     async updateProduct(
        id: number,
        updateProductDto: UpdateProductDto,
@@ -200,14 +182,8 @@ export class ProductService {
     return this.productRepository.save(product);
     }
 
-    /*<========================================>
-       🚩      Update A Single Product End     🚩
-    ===========================================>*/
-    
+     /*===================  Delete A Single Product   =====================*/
 
-    /*<========================================>
-       🏳️  Delete A Single Product  Start  🏳️
-    ===========================================>*/
 
     async deleteProduct(id: number, userId: number): Promise<{ message: string }> {
 
@@ -224,12 +200,6 @@ export class ProductService {
         await this.productRepository.remove(product);
         return { message: `Product ${id} deleted successfully.` };
     }
-
-    /*<========================================>
-       🚩      Delete A Single Product End     🚩
-    ===========================================>*/
-
-
 
 }
 
