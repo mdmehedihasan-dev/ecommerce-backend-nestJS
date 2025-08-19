@@ -11,7 +11,7 @@ export class ReviewController {
 
     constructor( private readonly reviewService: ReviewService) {}
 
-    /*🏳️<===============(Create Review Start)===============>🏳️*/
+    /*===============(Create Review Start)===============>🏳*/
     @Post('createreview')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -22,9 +22,7 @@ export class ReviewController {
     async createReview(@Body() createReviewDto: CreateReviewDto,@Request() req) {
         return this.reviewService.createReview(createReviewDto, req.user.id);
     }
-    /*🚩<===============(Create Review End)===============>🚩*/
-
-    /*🏳️<===============(Update Review Start)===============>🏳️*/
+    /*===============(Update Review Start)===============*/
     @Put('updatereview/:id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -35,12 +33,12 @@ export class ReviewController {
     async updateReview(@Body() updateReviewDto: UpdateReviewDto, @Request() req, @Param('id') id: string) {
         return this.reviewService.updateReview(updateReviewDto, req.user.id, +id);
     }
-    /*🚩<===============(Update Review End)===============>🚩*/
+
 
 
     
 
-   /*🏳️<===============(Delete Review Start)===============>🏳️*/
+   /*===============(Delete Review Start)===============/
     @Delete('deletereview/:id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -52,10 +50,10 @@ export class ReviewController {
         
         return this.reviewService.deleteReview(+id, req.user.id);
     }
-    /*🚩<===============(Delete Review End)===============>🚩*/
 
 
-    /*🏳️<===============(Get All Review Start)===============>🏳️*/
+
+    /*==============(Get All Review Start)===============*/
     @Get('getAllReview')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -66,36 +64,4 @@ export class ReviewController {
     async getAllReview() {
         return this.reviewService.allReview();
     }
-    /*🚩<===============(Delete All Review End)===============>🚩*/
-
-
-    
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-
-    
-
-
-
- 
-   
-    // get all reviews
-    // get reviews by product id
-
-
-
-
-
-
 }
