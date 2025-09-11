@@ -21,9 +21,6 @@ export class ReviewService {
     ) {}
 
 
-    /*<========================================>
-      🏳️      create Review Part Start     🏳️
-    ===========================================>*/
    async createReview(createReviewDto: CreateReviewDto, userId: number): Promise<any> {
     const { productId , ...reviewData } = createReviewDto;
 
@@ -34,13 +31,12 @@ export class ReviewService {
 
     const product = await this.productRepository.findOne({
         where: { id: productId },
-        relations: ['vendor'], // এটিই ভীষণ জরুরি
+        relations: ['vendor'], 
     });
     if (!product) {
         throw new NotFoundException('Product not found');
     }
 
-    // 🛑 Check: product.vendor থাকবে না (undefined)
     if (product.vendor?.id === user.id) {
          return { message: 'Cannot review your own product' };
     }
@@ -55,13 +51,7 @@ export class ReviewService {
 
    }
 
-    /*<========================================>
-      🚩      create Review Part End       🚩
-    ===========================================>*/
 
-    /*<========================================>
-      🏳️      Update Review Part Start     🏳️
-    ===========================================>*/
     async updateReview(updateReviewDto: UpdateReviewDto, userId: number, reviewId: number): Promise<any> {
         
     
@@ -90,12 +80,7 @@ export class ReviewService {
             };
 
      }
-     /*<========================================>
-       🚩      Update Review Part End      🚩
-    ===========================================>*/
-     /*<========================================>
-      🏳️      Delete Review Part Start     🏳️
-    ===========================================>*/
+
    
     async deleteReview(reviewId: number, userId: number): Promise<any> {
 
@@ -121,13 +106,7 @@ export class ReviewService {
 
         return { message: 'Review deleted successfully' };
     }
-    /*<========================================>
-      🚩     Delete Review Part End      🚩
-    ===========================================>*/
 
-    /*<========================================>
-       🏳️   Get All Review Start    🏳️
-    ===========================================>*/
 
     async allReview(): Promise<any[]> {
 
@@ -148,9 +127,7 @@ export class ReviewService {
 
 
     }
-     /*<========================================>
-         🚩     Delete All Review End     🚩
-    ===========================================>*/
+
 
 
 
