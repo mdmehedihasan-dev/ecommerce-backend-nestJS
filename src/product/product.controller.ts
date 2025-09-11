@@ -57,11 +57,7 @@ export class ProductController {
 
    return this.productService.createProduct(userId,createProductDto,imagePath ?? undefined  );
   }
-  /*🚩<===============(Create Product End)===============>🚩*/
 
-
-
-  /*🏳️<===============(Get A Product Start)===============>🏳️ */
    @Get('getById/:id')
    @UseGuards(JwtAuthGuard)
    @ApiBearerAuth()
@@ -74,11 +70,7 @@ export class ProductController {
     console.log(userId)
          return this.productService.getProductById(id,userId);
    }
-  /*🚩<===============(Get A Product End)===============>🚩*/
 
-
-
-  /*🏳️<===============(Get All Product Start)===============>🏳️ */
   @Get('getAll')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
@@ -90,11 +82,7 @@ export class ProductController {
       console.log(userId)
       return this.productService.getAllProduct(userId);
   }
-  /*🚩<===============(Get All Product End)===============>🚩*/
 
-
-
-  /*🏳️<===============(Update A Product Start)===============>🏳️ */
   @Put('update/:id')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(
@@ -141,10 +129,7 @@ export class ProductController {
     const userId = req.user.id;
     return this.productService.updateProduct(id, UpdateProductDto,userId, imagePath);
   }
-    /*🚩<===============(Update A Product End)===============>🚩*/
 
-
-    /*🏳️<===============(Delete A Product Start)===============>🏳️ */
     @Delete('delete/:id')
     @UseGuards(JwtAuthGuard)  
     @ApiBearerAuth()
@@ -157,7 +142,7 @@ export class ProductController {
         const userId = req.user.id;
         return this.productService.deleteProduct(id, userId);
     }
-  /*🚩<===============(Delete A Product End)===============>🚩*/
+
 
 
 
