@@ -16,10 +16,6 @@ export class StoreService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-
-   /*<========================================>
-         🏳️   Create Store Start    🏳️
-   ===========================================>*/
     async create(createStoreDto: CreateStoreDto,userId: number ): Promise<Store> {
  
         const { storeName, storeDescription } = createStoreDto;
@@ -41,13 +37,7 @@ export class StoreService {
         });
         return this.storeRepository.save(store);
     }
-    /*<========================================>
-       🚩       Create Store End        🚩
-    ===========================================>*/
 
-     /*<========================================>
-         🏳️  Get All Create Store Start    🏳️
-    ===========================================>*/
     async getAllStores(): Promise<any[]> {
      const stores = await this.storeRepository.find({
         relations: ['storeOwner', 'products', 'products.reviews'],
@@ -65,14 +55,7 @@ export class StoreService {
          }),
         );
    }
-    /*<========================================>
-       🚩      Get All Create Store End     🚩
-    ===========================================>*/
 
-
-   /*<========================================>
-         🏳️  Get Single Store By ID Start    🏳️
-    ===========================================>*/
  
     async getStoreById(id: number): Promise<any> {
       const store = await this.storeRepository.findOne({
@@ -94,13 +77,7 @@ export class StoreService {
         };
   }
 
-    /*<========================================>
-       🚩      Get Single Store By ID End     🚩
-    ===========================================>*/
 
-    /*<========================================>
-         🏳️  Delete Store By ID Start    🏳️
-    ===========================================>*/
    
    async deleteStoreById(storeId: number, userId: number): Promise<{ message: string }> {
     
@@ -123,12 +100,7 @@ export class StoreService {
     
    }
 
-   /*<========================================>
-       🚩  Delete Store By ID End    🚩
-   ===========================================>*/
-   /*<========================================>
-         🏳️  Update Store By ID Start    🏳️
-    ===========================================>*/
+
 
     async updateStoreById(storeId: number, updateStoreDto: UpdateStoreDto, userId: number): 
        Promise<{ message: string; store: Store }> {
@@ -157,13 +129,7 @@ export class StoreService {
 
     }
   
-    /*<========================================>
-         🚩  Update Store By ID End    🚩
-    ===========================================>*/
 
-    /*<========================================>
-         🏳️  calculateStoreReview  start 🏳️
-    ===========================================>*/
 
     private calculateStoreReview(store: Store): {
       averageRating: number;
@@ -197,10 +163,6 @@ export class StoreService {
         productsWithStats,
         };
     }
-
-    /*<========================================>
-         🚩  calculateStoreReview  start 🚩
-    ===========================================>*/
 
 
 
