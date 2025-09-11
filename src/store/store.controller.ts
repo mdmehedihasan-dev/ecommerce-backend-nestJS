@@ -12,7 +12,7 @@ export class StoreController {
 
   constructor(private readonly storeService: StoreService) {}
 
-  /*🏳️<===============(Create Store Start)===============>🏳️ */
+ 
   @Post('createStore')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
@@ -23,10 +23,7 @@ export class StoreController {
     const userId = req.user.id;
     return this.storeService.create(createStoreDto,userId);
   }
-  /*🚩<===============(Create Store End)===============>🚩 */
 
-
-  /*🏳️<===============(Get All Stores Start)===============>🏳️ */
   @Get('getAll')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
@@ -37,9 +34,7 @@ export class StoreController {
   
     return this.storeService.getAllStores();
   }
-  /*🚩<===============(Get All Stores End)===============>🚩 */
 
-  /*🏳️<===============(Get Store By ID Start)===============>🏳️ */
   @Get('getSingleStore/:id')
   // @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
@@ -51,8 +46,7 @@ export class StoreController {
 
     return this.storeService.getStoreById(+id);
   }
-  /*🚩<===============(Get Store By ID End)===============>🚩 */
-  /*🏳️<===============(Delete Store by ID Start)===============>🏳️ */
+
 
   @Delete('deleteStore/:id')
   @UseGuards(JwtAuthGuard)
@@ -67,8 +61,6 @@ export class StoreController {
     return this.storeService.deleteStoreById(+id, userId);
   }
 
-  /*🚩<===============(Delete Store by End)===============>🚩 */
-  /*🏳️<===============(Update Stores by ID Start)===============>🏳️ */
 
   @Put('updateStore/:id')
   @UseGuards(JwtAuthGuard)
