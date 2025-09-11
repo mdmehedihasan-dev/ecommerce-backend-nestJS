@@ -11,7 +11,6 @@ export class ReviewController {
 
     constructor( private readonly reviewService: ReviewService) {}
 
-    /*===============(Create Review Start)===============>🏳*/
     @Post('createreview')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -22,7 +21,6 @@ export class ReviewController {
     async createReview(@Body() createReviewDto: CreateReviewDto,@Request() req) {
         return this.reviewService.createReview(createReviewDto, req.user.id);
     }
-    /*===============(Update Review Start)===============*/
     @Put('updatereview/:id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -38,7 +36,7 @@ export class ReviewController {
 
     
 
-   /*===============(Delete Review Start)===============/
+
     @Delete('deletereview/:id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
@@ -53,7 +51,6 @@ export class ReviewController {
 
 
 
-    /*==============(Get All Review Start)===============*/
     @Get('getAllReview')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
