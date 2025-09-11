@@ -12,12 +12,7 @@ export class CategoryService {
        private readonly categoryRepository: Repository<Category>,
       //  @InjectRepository(Product)
       //  private readonly userRepository: Repository<User>,
-     ) {}
-
-
-    /*<========================================>
-           🏳️   Create Category Start    🏳️
-    ===========================================>*/ 
+     ) 
     async createCategory(createCategoryDto: CreateCategoryDto, ownerId: number): Promise<Category> {
 
       const { categoryName, categoryDescription } = createCategoryDto;
@@ -37,12 +32,7 @@ export class CategoryService {
 
       return await this.categoryRepository.save(category);
     }
-    /*<========================================>
-       🚩       Create Category End        🚩
-    ===========================================>*/
-    /*<========================================>
-           🏳️   Update Category Start    🏳️
-    ===========================================>*/
+
     async updateCategory(
         id: number, 
         updateCategoryDto: CreateCategoryDto, 
@@ -64,12 +54,7 @@ export class CategoryService {
       Object.assign(category, updateCategoryDto);
       return await this.categoryRepository.save(category);
     }
-    /*<========================================>
-       🚩       Update Category End        🚩
-    ===========================================>*/
-    /*<========================================>
-           🏳️   Delete Category Start    🏳️
-    ===========================================>*/
+
     async deleteCategory(id: number, ownerId: number): Promise<{ message: string }> {
         const category = await this.categoryRepository.findOne({ where: { id } });
 
@@ -84,12 +69,7 @@ export class CategoryService {
 
             return { message: 'Category deleted successfully',}
           }
-        /*<========================================>
-           🚩       Delete Category End        🚩
-        ===========================================>*/
-        /*<========================================>
-               🏳️   Get All Categories Start    🏳️
-        ===========================================>*/
+
     
         async getAllCategory(ownerId: number): Promise<Category[]> {
     
@@ -102,13 +82,7 @@ export class CategoryService {
             return categories;
         }
         
-    
-        /*<========================================>
-           🚩       Get All Categories End        🚩
-        ===========================================>*/
-        /*<========================================>
-               🏳️   Get Category By ID Start    🏳️
-        ===========================================>*/
+
         async getCategoryById(id: number, ownerId: number): Promise<Category> {
             const category = await this.categoryRepository.findOne({ where: { id } });
 
@@ -122,9 +96,6 @@ export class CategoryService {
 
             return category;
         }
-        /*<========================================>
-          🚩       Get Category By ID End        🚩
-        ===========================================>*/
 
       
       
